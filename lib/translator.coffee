@@ -68,7 +68,9 @@ class Translator
   ###
   Add new *object of the Translator
   ###
-  add: (object)->
+  add: (objects...)->
+
+    console.log objects
 
     # _.forEach arguments, (object) ->
       # @_translate = _.assign(@_translate, object)
