@@ -20,7 +20,7 @@ var translate = require("sailor-translate");
 
 ## API
 
-### .lang(<language>)
+### .lang(\<language>)
 
 Set up the default language to resolve a key
 
@@ -33,7 +33,7 @@ Get the language to translate. By default is 'en'
 Add new object to the Translator. Object structure are based in [angular-translate](https://github.com/angular-translate/angular-translate) objects.
 
 
-### .get(<key>)
+### .get(\<key>)
 
 
 Get a determinate key of the translator. 
