@@ -1,6 +1,6 @@
 {
   "name": "sailor-translate-user",
-  "description": "Translation for Sailor module user",
+  "description": "Translations for Sailor",
   "version": "0.0.0",
   "author": {
     "name": "Kiko Beats",
@@ -19,7 +19,7 @@
   "main": "",
   "repository": "sailorjs/sailor-translate-user",
   "scripts": {
-      "test": "mocha -b",
+      "test": "sh test/test.sh",
       "prepublish": "npm prune"
     }
 }

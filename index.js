@@ -1,13 +1,12 @@
 /**
  * Dependencies
  */
-var _    = require("lodash");
-var user = require("sailor-translate-user");
+var CoffeeScript= require("coffee-script");
 
-var translate = {};
-_.assign(translate, user);
+// Register CoffeeScript if exits
+if(CoffeeScript.register) CoffeeScript.register();
 
 /**
  * Exports
  */
- module.exports = translate;
+module.exports = require('./lib/translator');

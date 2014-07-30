@@ -28,7 +28,7 @@ translate["es"].User.Password.NotFound
 // => "No se encuentra la contraseña"
 ```
 
-For use in Sails you can use `req.locale` to get the language:
+For use in Sails you can use `req.language` to get the language:
 
 ```
 translate[req.locale].User.Password.NotFound
