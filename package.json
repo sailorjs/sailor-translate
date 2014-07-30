@@ -1,5 +1,5 @@
 {
-  "name": "sailor-translate-user",
+  "name": "sailor-translate",
   "description": "Translations for Sailor",
   "version": "0.1.0",
   "author": {
@@ -27,7 +27,7 @@
   ],
   "license": "MIT",
   "main": "./index.js",
-  "repository": "sailorjs/sailor-translate-user",
+  "repository": "sailorjs/sailor-translate",
   "scripts": {
     "test": "sh test/test.sh",
     "prepublish": "npm prune"
