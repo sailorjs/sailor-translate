@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "args-js": "^0.10.5",
-    "coffee-script": "^1.7.1",
+    "coffee-script": "*",
     "lodash": "^2.4.1"
   },
   "devDependencies": {

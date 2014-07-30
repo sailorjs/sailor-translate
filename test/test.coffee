@@ -84,6 +84,3 @@ describe 'Translator Designed', ->
         translate.get("User.Username.Yet")
       catch err
         done()
-
-    it 'Singleton Pattern',->
-      #...
