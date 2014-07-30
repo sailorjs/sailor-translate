@@ -68,15 +68,12 @@ class Translator
   ###
   Add new *object of the Translator
   ###
-  add: (objects...)->
+  add: (objt, o2)->
+    args = Args([
+      {objt: Args.OBJECT | Args.Required}
+      ], arguments)
 
-    console.log objects
-
-    # _.forEach arguments, (object) ->
-      # @_translate = _.assign(@_translate, object)
-
-
-    @_translate = _.assign(@_translate, object)
+    @_translate = _.assign(@_translate, args.objt, o2)
     this
 
   ###
