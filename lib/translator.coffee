@@ -68,12 +68,12 @@ class Translator
   ###
   Add new *object of the Translator
   ###
-  add: (objt, o2)->
-    args = Args([
-      {objt: Args.OBJECT | Args.Required}
-      ], arguments)
+  add: (objects...)->
+    # args = Args([
+    #   {objt: Args.OBJECT | Args.Required}
+    #   ], arguments)
 
-    @_translate = _.assign(@_translate, args.objt, o2)
+    @_translate = _.assign(@_translate, objects)
     this
 
   ###
