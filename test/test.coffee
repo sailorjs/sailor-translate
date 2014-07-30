@@ -3,7 +3,6 @@ should     = require 'should'
 Translator = require '../'
 Message    = require './Message'
 User       = require './User'
-assert     = require 'assert'
 
 describe 'Translator CRUD', ->
 
@@ -78,10 +77,13 @@ describe 'Translator Designed', ->
       result = translate.add(User, Message).lang("en").get("Message.Status.Error")
       result.should.eql("Error in the mensage.")
 
-
-    xit "Singleton Pattern to access", ->
-
-    xit 'throwed Error if is not possible resolve the query', ->
+    it 'throwed Error if is not possible resolve the query', (done)->
       translate = new Translator
       translate.add User
-      assert.throws translate.get("User.Username.Yet"), Error, "Translator key doesn't exist"
+      try
+        translate.get("User.Username.Yet")
+      catch err
+        done()
+
+    it 'Singleton Pattern',->
+      #...

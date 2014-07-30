@@ -1,25 +1,34 @@
 {
   "name": "sailor-translate-user",
   "description": "Translations for Sailor",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "author": {
     "name": "Kiko Beats",
     "email": "josefrancisco.verdu@gmail.com",
     "url": "https://github.com/sailorjs"
   },
-  "dependencies": {},
-  "devDependencies": {
-    "mocha": "^1.20.1",
-    "should": "^4.0.4"
+  "dependencies": {
+    "args-js": "^0.10.5",
+    "lodash": "^2.4.1"
   },
-  "engines": {},
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  },
+  "engines": {
+    "node": "*"
+  },
   "homepage": "",
-  "keywords": [],
+  "keywords": [
+    "sailor",
+    "translator",
+    "localization"
+  ],
   "license": "MIT",
-  "main": "",
+  "main": "./index.js",
   "repository": "sailorjs/sailor-translate-user",
   "scripts": {
-      "test": "sh test/test.sh",
-      "prepublish": "npm prune"
-    }
+    "test": "sh test/test.sh",
+    "prepublish": "npm prune"
+  }
 }

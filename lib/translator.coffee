@@ -69,11 +69,9 @@ class Translator
   Add new *object of the Translator
   ###
   add: (objects...)->
-    # args = Args([
-    #   {objt: Args.OBJECT | Args.Required}
-    #   ], arguments)
+    for object in objects
+      @_translate = _.assign(@_translate, object)
 
-    @_translate = _.assign(@_translate, objects)
     this
 
   ###
@@ -95,7 +93,7 @@ class Translator
       result = _getProperty(query, @get_list())
       return result if result isnt undefined
 
-    throw new Error("Translator key doesn't exist");
+    throw new Error("Translator key doesn't exist")
 
 
 # -- EXPORTS -------------------------------------------------------------
