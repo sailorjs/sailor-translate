@@ -28,13 +28,15 @@ Set up the default language to resolve a key
 
 Get the language to translate. By default is 'en'
 
+### .get_list()
+
+Get a list of object added.
+
 ### .add([Objects..])
 
 Add new object to the Translator. Object structure are based in [angular-translate](https://github.com/angular-translate/angular-translate) objects.
 
-
 ### .get(\<key>)
-
 
 Get a determinate key of the translator. 
 
