@@ -8,4 +8,4 @@ module.exports.es = User:
 
   Username:
     Already: 'Usuario ya registrado.'
-    NotFound: 'Usuario no encontrado'
+    NotFound: 'Usuario no encontrado.'

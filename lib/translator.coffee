@@ -50,51 +50,39 @@ class Translator
     @_language = args.lang
     this
 
+  # -- API ------------------------------------------------------------
+
   get_list: ->
     @_translate
 
   get_lang: ->
     @_language
 
-  # -- API ------------------------------------------------------------
-
-  ###
-  Set up the language to access to the Translator
-  ###
-  lang: ->
-    @_language
+  lang: (language) ->
+    args = Args([
+      {lang: Args.STRING | Args.required}
+      ], arguments)
+    @_language = language
     this
 
-  ###
-  Add new *object of the Translator
-  ###
   add: (objects...)->
     for object in objects
-      @_translate = _.assign(@_translate, object)
+      result = _.merge(@_translate, object)
 
     this
 
-  ###
-  Get a determinate key of the Translator
-  ###
   get: (path) ->
     args = Args([
       {path: Args.STRING | Args.Required}
       ], arguments)
 
     query = "#{@get_lang()}.#{args.path}"
-    result = _getProperty(query, @get_list())
 
-    return result if result isnt undefined
-
-    if @get_lang() isnt _lang
-      @lang()
-      query = "#{@get_lang()}.#{args.path}"
-      result = _getProperty(query, @get_list())
-      return result if result isnt undefined
-
-    throw new Error("Translator key doesn't exist")
-
+    try
+      _getProperty(query, @get_list())
+    catch e
+      query = "#{_lang}.#{args.path}"
+      _getProperty(query, @get_list())
 
 # -- EXPORTS -------------------------------------------------------------
 

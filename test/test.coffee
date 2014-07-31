@@ -4,13 +4,19 @@ Translator = require '../'
 Message    = require './Message'
 User       = require './User'
 
-describe 'Translator CRUD', ->
+describe 'Translator', ->
 
   describe 'Create ::', ->
 
-    it 'created a new translator', ->
+    it 'created a new translator as \'en\' with default language', ->
       translate = new Translator
       translate.should.be.an.instanceof(Translator)
+      translate.get_lang().should.eql('en')
+
+    it 'created a new translator with default language (en)', ->
+      translate = new Translator('es')
+      translate.should.be.an.instanceof(Translator)
+      translate.get_lang().should.eql('es')
 
     it 'empty list of object in the begin', ->
       translate = new Translator
@@ -22,65 +28,52 @@ describe 'Translator CRUD', ->
       translate = new Translator
       translate.add User
       translate.get_list().should.not.empty
+      translate.get('User.Username.NotFound').should.eql('Username not found.')
 
     it 'added different objects to the translator', ->
       translate = new Translator
       translate.add User
       translate.add Message
-      translate.get_list().should.not.empty
+      translate.get('User.Username.NotFound').should.eql('Username not found.')
+      translate.get('Message.Status.Error').should.eql('Error in the mensage.')
 
-      result = translate.lang("en").get("Message.Status.Error")
-      result.should.eql("Error in the mensage.")
-
-  describe 'Language ::', ->
-
-    it 'checked that default language is \'en\'', ->
+    it 'added different objects to the translator in the same function', ->
       translate = new Translator
-      translate.get_lang().should.eql('en')
+      translate.add User, Message
+      translate.get('User.Username.NotFound').should.eql('Username not found.')
+      translate.get('Message.Status.Error').should.eql('Error in the mensage.')
 
-    it 'created a Translator with \'es\' language', ->
-      translate = new Translator('es')
+
+  describe 'Set ::', ->
+    it 'other language as default', ->
+      translate = new Translator
+      translate.add User, Message
+      translate.lang('es')
       translate.get_lang().should.eql('es')
+      translate.get('User.Username.NotFound').should.eql('Usuario no encontrado.')
+      translate.get('Message.Status.Error').should.eql('Error en el mensaje.')
 
-  describe 'Translate ::', ->
-
-    it 'translated specifing the language and the key exists', ->
+    it 'other language as default in a concatenate method', ->
       translate = new Translator
-      translate.add User
-      result = translate.lang("en").get("User.Username.Already")
-      result.should.eql("Username already exist.")
+      translate.add User, Message
+      translate.lang('es').get('User.Username.NotFound').should.eql('Usuario no encontrado.')
+      translate.lang('es').get('Message.Status.Error').should.eql('Error en el mensaje.')
 
-    it 'translated without specifing the language and the key exists', ->
+  describe 'Get ::', ->
+    it 'a value of a key that exist in the default language', ->
       translate = new Translator
-      translate.add User
-      result = translate.get("User.Username.Already")
-      result.should.eql('Username already exist.')
+      translate.add User, Message
+      translate.get('User.Username.Already').should.eql('Username already exist.')
 
-    it 'tried to translate when language specifing language doesnt exists but is possible translate with the default language', ->
+    it 'a value of a key that desn\'t exist in the default language but exist in origin language', ->
       translate = new Translator
-      translate.add User
-      result = translate.lang("pt").get("User.Username.Already")
-      result.should.eql("Username already exist.")
+      translate.add User, Message
+      translate.lang('pt').get('User.Username.Already').should.eql('Username already exist.')
 
-
-describe 'Translator Designed', ->
-
-  describe 'Basic ::', ->
-
-    it 'concatenated actions', ->
+    it 'a value of a key that desn\'t exist ', (done)->
       translate = new Translator
-      result = translate.add(User).lang("en").get("User.Username.Already")
-      result.should.eql("Username already exist.")
-
-    it 'added different object in one action', ->
-      translate = new Translator
-      result = translate.add(User, Message).lang("en").get("Message.Status.Error")
-      result.should.eql("Error in the mensage.")
-
-    it 'throwed Error if is not possible resolve the query', (done)->
-      translate = new Translator
-      translate.add User
+      translate.add User, Message
       try
-        translate.get("User.Username.Yet")
+        translate.lang('pt').get('User.Usernamasdade.Already').should.eql('Username already exist.')
       catch err
         done()
