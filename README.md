@@ -24,9 +24,13 @@ var translate = require("sailor-translate");
 
 Set up the default language to resolve a key
 
+### .get_default()
+
+Get the default language for the Translator
+
 ### .get_lang()
 
-Get the language to translate. By default is 'en'
+Get the actual language for the Translator
 
 ### .get_list()
 

@@ -1,8 +1,8 @@
 ###
 # Depedencies
 ###
-Args         = require 'args-js'
-_            = require 'lodash'
+Args = require 'args-js'
+_    = require 'lodash'
 
 
 # -- PRIVATE ------------------------------------------------------------
@@ -51,6 +51,9 @@ class Translator
     this
 
   # -- API ------------------------------------------------------------
+
+  get_default: ->
+    _lang
 
   get_list: ->
     @_translate

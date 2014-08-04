@@ -77,3 +77,7 @@ describe 'Translator', ->
         translate.lang('pt').get('User.Usernamasdade.Already').should.eql('Username already exist.')
       catch err
         done()
+
+    it 'the default language', ->
+      translate = new Translator
+      translate.get_default().should.eql('en')
