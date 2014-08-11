@@ -70,13 +70,12 @@ describe 'Translator', ->
       translate.add User, Message
       translate.lang('pt').get('User.Username.Already').should.eql('Username already exist.')
 
-    it 'a value of a key that desn\'t exist ', (done)->
-      translate = new Translator
-      translate.add User, Message
-      try
+    it 'a value of a key that desn\'t exist ', ->
+     (->
+        translate = new Translator
+        translate.add User, Message
         translate.lang('pt').get('User.Usernamasdade.Already').should.eql('Username already exist.')
-      catch err
-        done()
+      ).should.throw()
 
     it 'the default language', ->
       translate = new Translator

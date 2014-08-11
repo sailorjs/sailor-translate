@@ -80,12 +80,12 @@ class Translator
       ], arguments)
 
     query = "#{@get_lang()}.#{args.path}"
-
-    try
-      _getProperty(query, @get_list())
-    catch e
+    try _getProperty("#{@get_lang()}.#{args.path}", @get_list())
+    catch err
       query = "#{_lang}.#{args.path}"
-      _getProperty(query, @get_list())
+      try _getProperty(query, @get_list())
+      catch e
+        throw new Error("Translator error: the key '#{path}' doesn't exist")
 
 # -- EXPORTS -------------------------------------------------------------
 
