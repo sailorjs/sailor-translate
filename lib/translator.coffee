@@ -52,19 +52,11 @@ class Translator
 
   # -- API ------------------------------------------------------------
 
-  get_default: ->
+  default: ->
     _lang
 
-  get_list: ->
-    @_translate
-
-  get_lang: ->
-    @_language
-
   lang: (language) ->
-    args = Args([
-      {lang: Args.STRING | Args.required}
-      ], arguments)
+    return @_language unless language?
     @_language = language
     this
 
@@ -75,15 +67,13 @@ class Translator
     this
 
   get: (path) ->
-    args = Args([
-      {path: Args.STRING | Args.Required}
-      ], arguments)
+    return @_translate unless path?
 
-    query = "#{@get_lang()}.#{args.path}"
-    try _getProperty("#{@get_lang()}.#{args.path}", @get_list())
+    query = "#{@_language}.#{path}"
+    try _getProperty("#{@_language}.#{path}", @_translate)
     catch err
-      query = "#{_lang}.#{args.path}"
-      try _getProperty(query, @get_list())
+      query = "#{_lang}.#{path}"
+      try _getProperty(query, @_translate)
       catch e
         throw new Error("Translator error: the key '#{path}' doesn't exist")
 

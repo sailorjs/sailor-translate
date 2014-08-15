@@ -14,35 +14,64 @@
 
 This package is included is sails core, but you can use in other proyect with:
 
-```
-var translate = require("sailor-translate");
+```coffeescript
+translate = require 'sailor-translate'
 ```
 
 ## API
 
-### .lang(\<language>)
-
-Set up the default language to resolve a key
-
-### .get_default()
+### .default()
 
 Get the default language for the Translator
 
-### .get_lang()
+```coffeescript
+translate = new Translator
+translate.default()
+# => ''en'
+```
 
-Get the actual language for the Translator
+### .lang([language])
 
-### .get_list()
+With argument: Set up the default language to resolve a key.
 
-Get a list of object added.
+```coffeescript
+translate = new Translator
+translate.lang('es')
+translate.lang()
+# => 'es'
+```
+
+Without argument: Get the actual language for the Translator.
+
+```coffeescript
+translate = new Translator('es')
+translate.lang()
+# => 'es'
+```
 
 ### .add([Objects..])
 
 Add new object to the Translator. Object structure are based in [angular-translate](https://github.com/angular-translate/angular-translate) objects.
 
-### .get(\<key>)
+```coffeescript
+translate = new Translator
+translate.add require './User'
+translate.add require './Message'
+```
 
-Get a determinate key of the translator. 
+### .get([key])
+
+Without argument: Get a list of object added.
+
+
+With argument: Get a determinate key of the translator. 
+
+```coffeescript
+translate = new Translator
+translate.add require './User'
+translate.get('User.Username.NotFound')
+# => 'Username not found.'
+```
 
 First try with the language that the user can be set, later with the default language (en) and finally throw a error is don't found the key.
 
@@ -51,16 +80,12 @@ First try with the language that the user can be set, later with the default lan
 
 Is possible concatenate actions in the same object. For example.
 
-```
+```coffeescript
 Message = require './Message'
 User    = require './User'
-
 result = translate.add(User).lang("en").get("User.Username.Already")
-console.log result # => "Username already exist."
-
+# => "Username already exist."
 ```
-
-
 
 ## License
 
