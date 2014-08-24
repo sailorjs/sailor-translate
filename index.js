@@ -6,7 +6,9 @@ var CoffeeScript= require("coffee-script");
 // Register CoffeeScript if exits
 if(CoffeeScript.register) CoffeeScript.register();
 
+var Translator = require('./lib/translator');
+
 /**
  * Exports
  */
-module.exports = require('./lib/translator');
+module.exports = new Translator();
