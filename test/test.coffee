@@ -1,6 +1,6 @@
 
 should     = require 'should'
-Translator = require '../'
+Translator = require '../lib/translator'
 Message    = require './Message'
 User       = require './User'
 
