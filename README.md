@@ -1,4 +1,6 @@
-# Sailor Translate
+<center>![](http://i.imgur.com/hjd3i9m.png)</center>
+
+# Translate for Sailor
 
 [![Build Status](http://img.shields.io/travis/sailorjs/sailor-translate/master.svg?style=flat)](https://travis-ci.org/sailorjs/sailor-translate)
 [![Dependency status](http://img.shields.io/david/sailorjs/sailor-translate.svg?style=flat)](https://david-dm.org/sailorjs/sailor-translate)
@@ -7,15 +9,26 @@
 [![Gittip](http://img.shields.io/gittip/Kikobeats.svg?style=flat)](https://www.gittip.com/Kikobeats/)
 
 
-> Create the interface to make easy use translation in Sailor!
+> Translations, translations everywhere
 
+
+## Install
+
+```coffeescript
+npm install sailor-translate
+```
 
 ## Usage
 
-This package is included is sails core, but you can use in other proyect with:
-
 ```coffeescript
 translate = require 'sailor-translate'
+```
+
+or using `sailor` dependency
+
+```coffeescript
+sailor 	  = require 'sailorjs'
+translate = sailor.translate
 ```
 
 ## API
