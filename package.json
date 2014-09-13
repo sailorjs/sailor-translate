@@ -8,28 +8,22 @@
     "url": "https://github.com/Kikobeats"
   },
   "dependencies": {
-    "args-js": "^0.10.5",
     "coffee-script": "*",
-    "lodash": "^2.4.1"
+    "args-js": "*",
+    "lodash": "*"
   },
   "devDependencies": {
     "mocha": "*",
     "should": "*"
   },
-  "engines": {
-    "node": "*"
-  },
-  "homepage": "",
   "keywords": [
     "sailor",
     "translator",
     "localization"
   ],
   "license": "MIT",
-  "main": "./index.js",
   "repository": "sailorjs/sailor-translate",
   "scripts": {
-    "test": "sh test/test.sh",
-    "prepublish": "npm prune"
+    "test": "sh test/test.sh"
   }
 }
