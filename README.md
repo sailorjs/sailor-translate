@@ -102,6 +102,5 @@ result = translate.add(User).lang("en").get("User.Username.Already")
 
 ## License
 
-MIT © [Kiko Beats](http://www.kikobeats.com)
-
+MIT © sailorjs
 
